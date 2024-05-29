@@ -1,29 +1,16 @@
 import "./App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import ListFrancesinhas from "./pages/ListFrancesinhas";
 
 function App() {
-  const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3069/francesinhas").then((res) => {
-      setListOfFrancesinhas(res.data);
-    });
-  }, []);
   return (
     <div className="App">
-      {listOfFrancesinhas.map((value, key) => {
-        return (
-          <div>
-            <div> {value.name} </div>
-            <div> {value.price} </div>
-            <div> {value.rating} </div>
-            <div> {value.ingredients} </div>
-            <div> {value.restaurant} </div>
-            <p></p>
-          </div>
-        );
-      })}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
