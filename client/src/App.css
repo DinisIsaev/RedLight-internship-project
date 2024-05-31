@@ -1,3 +1,300 @@
+@font-face {
+  font-family: "NanumMyeongjo";
+  src: url("./media/NanumMyeongjo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Mukta";
+  src: url("./media/Mukta-Regular.ttf");
+}
+
 .App {
   text-align: center;
+}
+
+.html {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  padding: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*CSS FOR HOME PAGE*/
+
+.homePage {
+  background-color: #ffdfb4;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  padding-top: 5rem;
+}
+
+.topBannerLabel {
+  font-size: 3.2rem;
+  font-family: "Mukta";
+}
+
+.bannerImage {
+  max-width: 100%;
+  height: auto;
+}
+
+.bottomBannerLabel {
+  background-color: white;
+  font-size: 3rem;
+  margin-top: 2vh;
+  padding: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.francesinhasHomePage {
+  display: flex;
+  flex-direction: row;
+  height: 65rem;
+  padding: 1rem;
+}
+
+.francesinhasHomePageLeft {
+  width: 70%;
+  height: 100%;
+  text-align: left;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exampleFrancesinha {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 25%;
+  width: auto;
+  border-radius: 50px;
+  background-color: #631e08;
+  color: white;
+  margin: 1.5rem;
+}
+
+.exampleFrancesinhaImageContainer {
+  width: 35%;
+  height: 85%;
+}
+
+.exampleFrancesinhaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.exampleFrancesinhaText {
+  width: 50%;
+  padding: 5%;
+}
+
+.exampleFrancesinha:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.exampleFrancesinhaName {
+  font-size: 4rem;
+}
+
+.exampleFrancesinhaIngredients {
+  font-size: 2rem;
+}
+
+.francesinhasHomePageRight {
+  width: 30%;
+  height: 100%;
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.homePageButton {
+  border-radius: 12px;
+  font-size: 3rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  color: #ffdfb4;
+  background-color: #631e08;
+  border: none;
+  text-decoration: none;
+}
+
+.homePageButton:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.restaurantsHomePage {
+  display: flex;
+  flex-direction: row;
+  height: 65rem;
+}
+
+.restaurantsHomePageLeft {
+  width: 30%;
+  height: 100%;
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurantsHomePageLeft button {
+  border-radius: 12px;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  color: #ffdfb4;
+  background-color: #631e08;
+  border: none;
+}
+
+.restaurantsHomePageLeft button:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.restaurantsHomePageRight {
+  width: 67%;
+  padding-right: 3%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+.exampleRestaurant {
+  display: flex;
+  width: 48.5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-bottom: 5rem;
+}
+
+.exampleRestaurant:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.exampleRestaurantImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exampleRestaurantText {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #f2c78f;
+  width: 100%;
+}
+
+/*CSS FOR THE PAGE TO LIST ALL FRANCESINHAS OR RESTAURANTS*/
+
+.listPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  height: auto;
+  border: 5px solid black;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.listPart:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.name {
+  flex: 20%;
+  border-bottom: 1px solid lightgray;
+  background-color: black;
+  display: grid;
+  place-content: center;
+  color: white;
+  font-size: 25px;
+}
+
+/*CSS FOR THE PAGE TO ADD FRANCESINHA OR RESTAURANT*/
+
+.addPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addTitle {
+  font-size: 50px;
+  padding: 15px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  height: auto;
+  padding: 20px;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+
+.formContainer label {
+  font-size: 20px;
+}
+
+.formContainer #inputAdd {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.formContainer button {
+  margin-top: 25px;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+}
+
+.formContainer button:hover {
+  cursor: pointer;
+  background-color: darkgrey;
+}
+
+span {
+  color: red;
 }

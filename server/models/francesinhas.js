@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Francesinhas = sequelize.define("francesinhas", {
+  const Francesinhas = sequelize.define("Francesinhas", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,10 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     ingredients: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    restaurant: {
       type: DataTypes.STRING,
       allowNull: false,
     },

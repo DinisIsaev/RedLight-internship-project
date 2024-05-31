@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Restaurants = sequelize.define("restaurants", {
+  const Restaurants = sequelize.define("Restaurants", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,18 +17,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
       validate: {
         max: 5,
         min: 0,
       },
     },
-    francesinhas: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   });
+
+  Restaurants.associate = (models) => {
+    Restaurants.hasMany(models.Francesinhas, {
+      onDelete: "cascade",
+    });
+  };
 
   return Restaurants;
 };

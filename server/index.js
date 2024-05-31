@@ -9,6 +9,8 @@ app.use(cors());
 //Routers
 const francesinhasRouter = require("./routes/francesinhas");
 app.use("/francesinhas", francesinhasRouter);
+const restaurantsRouter = require("./routes/restaurants");
+app.use("/restaurants", restaurantsRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3069, () => {

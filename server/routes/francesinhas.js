@@ -1,20 +1,34 @@
 const express = require("express");
 const router = express.Router();
-const { francesinhas } = require("../models");
+const { Francesinhas } = require("../models");
 
+//Get all francesinhas
 router.get("/", async (req, res) => {
-  const listOfFrancesinhas = await francesinhas.findAll();
+  const listOfFrancesinhas = await Francesinhas.findAll();
   res.json(listOfFrancesinhas);
 });
 
+//Get specific francesinha by ID
+router.get("/id/:id", async (req, res) => {
+  const id = req.params.id;
+  const francesinha = await Francesinhas.findByPk(id);
+  res.json(francesinha);
+});
+
+//Get all francesinhas of a specific restaurant
+router.get("/ofRestaurant/:postId", async (req, res) => {
+  const restaurantId = req.params.RestaurantId;
+  const francesinha = await Francesinhas.findAll({
+    where: { RestaurantId: restaurantId },
+  });
+  res.json(francesinha);
+});
+
+//Add francesinha
 router.post("/", async (req, res) => {
-  try {
-    const francesinha = req.body;
-    await francesinhas.create(francesinha);
-    res.json(francesinha);
-  } catch (error) {
-    res.send(error);
-  }
+  const francesinha = req.body;
+  await Francesinhas.create(francesinha);
+  res.json(francesinha);
 });
 
 module.exports = router;
