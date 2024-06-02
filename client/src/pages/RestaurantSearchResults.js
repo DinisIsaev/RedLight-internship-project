@@ -1,16 +1,19 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-function ListRestaurants() {
+function RestaurantSearchResults() {
+  let { search } = useParams();
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3069/restaurants").then((res) => {
-      setListOfRestaurants(res.data);
-    });
+    axios
+      .get(`http://localhost:3069/restaurants/name/${search}`)
+      .then((res) => {
+        setListOfRestaurants(res.data);
+      });
   }, []);
 
   const onSubmit = (event) => {
@@ -48,12 +51,10 @@ function ListRestaurants() {
               <div className="listPartImgContainer">ToBePhoto</div>
               <div className="listPartTextContainer">
                 <label className="listPartName"> {value.name}</label>
-                <label className="restaurantAddress"> {value.address}</label>
-                <label className="restaurantCity"> {value.city}</label>
-                <label className="restaurantCountry"> {value.country}</label>
-                <label className="restaurantRating">
-                  Rating: {value.rating}
-                </label>
+                <label> {value.country}</label>
+                <label className="restaurantListPartCity"> {value.city}</label>
+                <label> {value.address}</label>
+                <label> Rating: {value.rating}</label>
               </div>
             </div>
           );
@@ -63,4 +64,4 @@ function ListRestaurants() {
   );
 }
 
-export default ListRestaurants;
+export default RestaurantSearchResults;

@@ -19,11 +19,21 @@
 
 .navbar {
   display: flex;
-  padding: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.navbarItem {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  font-size: 1.5rem;
+  justify-content: center;
+}
+
+.navbarLink {
+  text-decoration: none;
+  color: black;
 }
 
 /*CSS FOR HOME PAGE*/
@@ -217,35 +227,109 @@
   width: 100%;
 }
 
-/*CSS FOR THE PAGE TO LIST ALL FRANCESINHAS OR RESTAURANTS*/
+/*CSS FOR THE PAGES TO LIST ALL RESTAURANTS OR FRANCESINHAS OR TO LIST ALL RESTAURANTS OR FRANCESINHAS BY NAME*/
+
+.listPage {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffdfb4;
+  justify-content: center;
+  align-items: center;
+}
+
+.listPageTitle {
+  flex: none;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  margin: 2rem;
+  margin-top: 3rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border: 3px solid #631e08;
+  border-radius: 12px;
+  background-color: #fbe0bd;
+  width: fit-content;
+}
+
+.listPageSubtitle {
+  font-size: 1.2rem;
+  margin: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.addRestaurantButton {
+  font-size: 1.2rem;
+  margin: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  padding-right: 1.2rem;
+  padding-left: 1.2rem;
+  background-color: #631e08;
+  color: #ffdfb4;
+  text-decoration: none;
+}
+
+.searchPart {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .listPart {
   display: flex;
   flex-direction: column;
+  width: 25%;
+  padding: 1rem;
+  background-color: #631e08;
+  color: #ffdfb4;
   justify-content: center;
-  width: 40vw;
-  height: auto;
-  border: 5px solid black;
-  border-radius: 5px;
-  margin: 10px;
+  align-items: center;
+  margin: 2rem;
 }
 
 .listPart:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
 }
 
-.name {
-  flex: 20%;
-  border-bottom: 1px solid lightgray;
+.listPartImgContainer {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   background-color: black;
-  display: grid;
-  place-content: center;
-  color: white;
-  font-size: 25px;
+  margin-bottom: 1rem;
 }
 
-/*CSS FOR THE PAGE TO ADD FRANCESINHA OR RESTAURANT*/
+.listPartTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.listPartName {
+  font-size: 2rem;
+}
+
+.restaurantListPartCity {
+  font-size: 1.5rem;
+}
+
+.francesinhaListPartName
+
+/*CSS FOR THE PAGES TO ADD FRANCESINHA OR RESTAURANT*/
 
 .addPage {
   display: flex;
@@ -297,4 +381,16 @@
 
 span {
   color: red;
+}
+
+/*CSS FOR PAGES THAT SHOW A SPECIFIC RESTAURANT OR FRANCESINHA*/
+
+.showPage {
+  background-color: #fbe0bd;
+}
+
+.showPageTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

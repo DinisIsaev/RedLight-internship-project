@@ -28,7 +28,6 @@ function AddRestaurant() {
     city: yup.string().required(),
     country: yup.string().required(),
     rating: yup.number().required(),
-    francesinhas: yup.string().required(),
   });
 
   return (

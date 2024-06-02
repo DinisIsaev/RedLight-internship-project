@@ -1,16 +1,19 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-function ListFrancesinhas() {
+function FrancesinhaSearchResults() {
+  let { search } = useParams();
   const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3069/francesinhas").then((res) => {
-      setListOfFrancesinhas(res.data);
-    });
+    axios
+      .get(`http://localhost:3069/francesinhas/name/${search}`)
+      .then((res) => {
+        setListOfFrancesinhas(res.data);
+      });
   }, []);
 
   const onSubmit = (event) => {
@@ -64,4 +67,4 @@ function ListFrancesinhas() {
   );
 }
 
-export default ListFrancesinhas;
+export default FrancesinhaSearchResults;

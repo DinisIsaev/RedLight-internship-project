@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function AddFrancesinha() {
+  let { restaurantId } = useParams();
   let navigate = useNavigate();
 
   const initialValues = {
@@ -16,9 +17,17 @@ function AddFrancesinha() {
   };
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3069/francesinhas", data).then((res) => {
-      navigate("/listfrancesinhas", { replace: true });
-    });
+    axios
+      .post("http://localhost:3069/francesinhas", {
+        name: data.name,
+        price: data.price,
+        rating: data.rating,
+        ingredients: data.ingredients,
+        RestaurantId: restaurantId,
+      })
+      .then((res) => {
+        navigate(`/showrestaurant/${restaurantId}`, { replace: true });
+      });
   };
 
   const validationSchema = yup.object().shape({
@@ -26,7 +35,6 @@ function AddFrancesinha() {
     price: yup.number().required(),
     rating: yup.number().required(),
     ingredients: yup.string().required(),
-    restaurant: yup.string().required(),
   });
 
   return (
@@ -50,9 +58,6 @@ function AddFrancesinha() {
           <label>Ingredients: </label>
           <ErrorMessage name="ingredients" component="span" />
           <Field id="inputAdd" name="ingredients" placeholder="Ingredients" />
-          <label>Restaurant: </label>
-          <ErrorMessage name="restaurant" component="span" />
-          <Field id="inputAdd" name="restaurant" placeholder="Restaurant" />
           <button type="submit"> Add francesinha</button>
         </Form>
       </Formik>
