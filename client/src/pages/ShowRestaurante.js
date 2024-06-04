@@ -43,14 +43,17 @@ function ShowRestaurante() {
           </div>
         </div>
       </div>
-      <div
-        className="addFrancesinhaToRestaurant"
-        onClick={() => navigate(`/addfrancesinha/toRestaurant/${id}`)}
-      >
-        <p>Add francesinha</p>
-      </div>
-      <div className="deleteRestaurant" onClick={() => deleteRestaurant(id)}>
-        <p>Delete</p>
+      <div className="settingButtons">
+        <p
+          onClick={() => navigate(`/addfrancesinha/toRestaurant/${id}`)}
+          className="settingButton"
+        >
+          Add francesinha
+        </p>
+        <p onClick={() => deleteRestaurant(id)} className="settingButton">
+          Delete
+        </p>
+        <p className="settingButton">Update</p>
       </div>
       <div className="list">
         {listOfFrancesinhas.map((value, key) => {

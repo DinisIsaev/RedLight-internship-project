@@ -34,8 +34,10 @@ function ListFrancesinhas() {
       <label>Looking for a specific francesinha?</label>
       <div className="searchPart">
         <form onSubmit={onSubmit}>
-          <input type="text" id="search" name="search" />
-          <button type="submit"> Search</button>
+          <input type="text" id="search" name="search" className="searchBar" />
+          <button type="submit" className="searchBarButton">
+            Search
+          </button>
         </form>
       </div>
       <div className="list">

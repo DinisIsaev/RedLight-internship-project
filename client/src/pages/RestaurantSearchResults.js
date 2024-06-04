@@ -25,7 +25,8 @@ function RestaurantSearchResults() {
   return (
     <div className="listPage">
       <label className="listPageTitle">
-        Here's a list of all the restaurants on our database!
+        Here's a list of the restaurants that contain your search on our
+        database!
       </label>
       <label className="listPageSubtitle">
         Want to add your restaurant? Here you add your very own restaurant and
@@ -37,8 +38,11 @@ function RestaurantSearchResults() {
       <label>Looking for a specific restaurant?</label>
       <div className="searchPart">
         <form onSubmit={onSubmit}>
-          <input type="text" id="search" name="search" />
-          <button type="submit"> Search</button>
+          <input type="text" id="search" name="search" className="searchBar" />
+          <button type="submit" className="searchBarButton">
+            {" "}
+            Search
+          </button>
         </form>
       </div>
       <div className="list">

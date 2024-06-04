@@ -257,14 +257,13 @@
   font-size: 1.2rem;
   margin: 2rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .addRestaurantButton {
   font-size: 1.2rem;
   margin: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-top: 0;
   border-radius: 8px;
   padding: 0.5rem;
   padding-right: 1.2rem;
@@ -277,9 +276,32 @@
 .searchPart {
   font-size: 1.2rem;
   margin-top: 0.5rem;
-  gap: 0.5rem;
   display: flex;
   flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.searchBar {
+  padding: 0.5rem;
+  margin-right: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid #631e08;
+  border-radius: 5px;
+  background-color: #fbe0bd;
+}
+
+.searchBarButton {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 5px;
+  background-color: #631e08;
+  color: #fbe0bd;
+}
+
+.searchBarButton:hover {
+  cursor: pointer;
 }
 
 .list {
@@ -393,4 +415,24 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.settingButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.settingButton {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 5px;
+  background-color: #631e08;
+  color: #fbe0bd;
+  margin: 1rem;
+}
+
+.settingButton:hover {
+  cursor: pointer;
 }

@@ -45,8 +45,11 @@ function ShowFrancesinha() {
           </div>
         </div>
       </div>
-      <div className="deleteFrancesinha" onClick={() => deleteFrancesinha(id)}>
-        <p>Delete</p>
+      <div className="settingButtons">
+        <p className="settingButton" onClick={() => deleteFrancesinha(id)}>
+          Delete
+        </p>
+        <p className="settingButton">Update</p>
       </div>
       <div
         className="listPart"
