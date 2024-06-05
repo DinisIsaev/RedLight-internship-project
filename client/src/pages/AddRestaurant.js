@@ -17,7 +17,7 @@ function AddRestaurant() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3069/restaurants", data).then((res) => {
-      navigate(`/showrestaurant/${res.Id}`, { replace: true });
+      navigate(`/listrestaurants`, { replace: true });
     });
   };
 
