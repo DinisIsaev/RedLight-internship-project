@@ -9,6 +9,8 @@ import AddRestaurant from "./pages/AddRestaurant";
 import ShowRestaurante from "./pages/ShowRestaurante";
 import RestaurantSearchResults from "./pages/RestaurantSearchResults";
 import FrancesinhaSearchResults from "./pages/FrancesinhaSearchResults";
+import UpdateFrancesinha from "./pages/UpdateFrancesinha";
+import UpdateRestaurant from "./pages/UpdateRestaurant";
 
 function App() {
   return (
@@ -47,9 +49,14 @@ function App() {
             element={<AddFrancesinha />}
           />
           <Route path="/showfrancesinha/:id" element={<ShowFrancesinha />} />
+          <Route
+            path="/updatefrancesinha/:id"
+            element={<UpdateFrancesinha />}
+          />
           <Route path="/listrestaurants" element={<ListRestaurants />} />
           <Route path="/addrestaurant" element={<AddRestaurant />} />
           <Route path="/showrestaurant/:id" element={<ShowRestaurante />} />
+          <Route path="/updaterestaurant/:id" element={<UpdateRestaurant />} />
           <Route
             path="/restaurantsearchresults/:search"
             element={<RestaurantSearchResults />}

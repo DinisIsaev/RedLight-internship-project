@@ -22,8 +22,12 @@ function ShowFrancesinha() {
 
   const deleteFrancesinha = (id) => {
     axios.delete(`http://localhost:3069/francesinhas/${id}`).then(() => {
-      navigate("/listFrancesinhas", { replace: true });
+      navigate(`/showrestaurant/${restaurant.id}`, { replace: true });
     });
+  };
+
+  const updateFrancesinha = (id) => {
+    navigate(`/updatefrancesinha/${id}`);
   };
 
   return (
@@ -49,21 +53,28 @@ function ShowFrancesinha() {
         <p className="settingButton" onClick={() => deleteFrancesinha(id)}>
           Delete
         </p>
-        <p className="settingButton">Update</p>
+        <p className="settingButton" onClick={() => updateFrancesinha(id)}>
+          Update
+        </p>
       </div>
-      <div
-        className="listPart"
-        onClick={() => navigate(`/showrestaurant/${restaurant.id}`)}
-      >
-        <div className="listPartImgContainer">ToBePhoto</div>
-        <div className="listPartTextContainer">
-          <label className="listPartName"> {restaurant.name}</label>
-          <label className="restaurantAddress"> {restaurant.address}</label>
-          <label className="restaurantCity"> {restaurant.city}</label>
-          <label className="restaurantCountry"> {restaurant.country}</label>
-          <label className="restaurantRating">
-            Rating: {restaurant.rating}
-          </label>
+      <label className="listPageSubtitle">
+        This francesinha is from the restaurant below:
+      </label>
+      <div className="list">
+        <div
+          className="listPart"
+          onClick={() => navigate(`/showrestaurant/${restaurant.id}`)}
+        >
+          <div className="listPartImgContainer">ToBePhoto</div>
+          <div className="listPartTextContainer">
+            <label className="listPartName"> {restaurant.name}</label>
+            <label className="restaurantAddress"> {restaurant.address}</label>
+            <label className="restaurantCity"> {restaurant.city}</label>
+            <label className="restaurantCountry"> {restaurant.country}</label>
+            <label className="restaurantRating">
+              Rating: {restaurant.rating}
+            </label>
+          </div>
         </div>
       </div>
     </div>

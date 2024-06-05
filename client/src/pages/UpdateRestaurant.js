@@ -2,23 +2,36 @@ import React from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-function AddRestaurant() {
+function UpdateRestaurant() {
+  let { id } = useParams();
   let navigate = useNavigate();
+  const [restaurant, setRestaurant] = useState({});
 
   const initialValues = {
-    name: "",
-    address: "",
-    city: "",
-    country: "",
-    rating: "",
+    name: restaurant.name,
+    address: restaurant.address,
+    city: restaurant.city,
+    country: restaurant.country,
+    rating: restaurant.rating,
   };
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3069/restaurants", data).then((res) => {
-      navigate(`/showrestaurant/${res.Id}`, { replace: true });
-    });
+    axios
+      .put(`http://localhost:3069/restaurants/${id}`, {
+        name: data.name,
+        address: data.address,
+        city: data.city,
+        country: data.country,
+        rating: data.rating,
+      })
+      .then((res) => {
+        navigate(`/showrestaurant/${id}`, {
+          replace: true,
+        });
+      });
   };
 
   const validationSchema = yup.object().shape({
@@ -31,9 +44,9 @@ function AddRestaurant() {
 
   return (
     <div className="addPage">
-      <label className="listPageTitle">Add a restaurant!</label>
+      <label className="listPageTitle">Edit a restaurant!</label>
       <label className="listPageSubtitle">
-        Fill the form with the details of the restaurant!
+        Fill the form with the updated details of the restaurant!
       </label>
       <Formik
         initialValues={initialValues}
@@ -63,4 +76,4 @@ function AddRestaurant() {
   );
 }
 
-export default AddRestaurant;
+export default UpdateRestaurant;

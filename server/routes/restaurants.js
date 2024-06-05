@@ -32,6 +32,25 @@ router.post("/", async (req, res) => {
   res.json(restaurant);
 });
 
+router.put("/:restaurantId", async (req, res) => {
+  const updatedRestaurant = req.body;
+  restaurantId = req.params.restaurantId;
+  await Restaurants.update(
+    {
+      name: updatedRestaurant.name,
+      address: updatedRestaurant.address,
+      city: updatedRestaurant.city,
+      country: updatedRestaurant.country,
+      rating: updatedRestaurant.rating,
+    },
+    {
+      where: {
+        id: restaurantId,
+      },
+    }
+  );
+});
+
 router.delete("/:restaurantId", async (req, res) => {
   const restaurantId = req.params.restaurantId;
   await Restaurants.destroy({

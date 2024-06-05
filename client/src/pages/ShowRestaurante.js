@@ -25,8 +25,12 @@ function ShowRestaurante() {
 
   const deleteRestaurant = (id) => {
     axios.delete(`http://localhost:3069/restaurants/${id}`).then(() => {
-      navigate("/listRestaurants", { replace: true });
+      navigate("/listrestaurants", { replace: true });
     });
+  };
+
+  const updateRestaurant = (id) => {
+    navigate(`/updaterestaurant/${id}`);
   };
 
   return (
@@ -53,8 +57,13 @@ function ShowRestaurante() {
         <p onClick={() => deleteRestaurant(id)} className="settingButton">
           Delete
         </p>
-        <p className="settingButton">Update</p>
+        <p onClick={() => updateRestaurant(id)} className="settingButton">
+          Update
+        </p>
       </div>
+      <label className="listPageSubtitle">
+        Here's a list of the francesinhas available from the restaurant:
+      </label>
       <div className="list">
         {listOfFrancesinhas.map((value, key) => {
           return (

@@ -2,32 +2,41 @@ import React from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function AddFrancesinha() {
-  let { restaurantId } = useParams();
+function UpdateFrancesinha() {
+  let { id } = useParams();
+  const [francesinha, setFrancesinha] = useState({});
   let navigate = useNavigate();
 
-  const initialValues = {
-    name: "",
-    price: "",
-    rating: "",
-    ingredients: "",
-    restaurant: "",
-  };
+  useEffect(() => {
+    axios.get(`http://localhost:3069/francesinhas/id/${id}`).then((res) => {
+      setFrancesinha(res.data);
+    });
+  }, []);
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3069/francesinhas", {
+      .put(`http://localhost:3069/francesinhas/${id}`, {
         name: data.name,
         price: data.price,
         rating: data.rating,
         ingredients: data.ingredients,
-        RestaurantId: restaurantId,
+        RestaurantId: francesinha.restaurantId,
       })
       .then((res) => {
-        navigate(`/showrestaurant/${restaurantId}`, { replace: true });
+        navigate(`/showfrancesinha/${id}`, {
+          replace: true,
+        });
       });
+  };
+
+  const initialValues = {
+    name: francesinha.name,
+    price: francesinha.price,
+    rating: francesinha.rating,
+    ingredients: francesinha.ingredients,
   };
 
   const validationSchema = yup.object().shape({
@@ -39,9 +48,9 @@ function AddFrancesinha() {
 
   return (
     <div className="addPage">
-      <label className="listPageTitle">Add a francesinha!</label>
+      <label className="listPageTitle">Edit selected francesinha.</label>
       <label className="listPageSubtitle">
-        Fill the form with the details of the francesinha!
+        Fill the form with the updated details of the francesinha!
       </label>
       <Formik
         initialValues={initialValues}
@@ -61,11 +70,11 @@ function AddFrancesinha() {
           <label>Ingredients: </label>
           <ErrorMessage name="ingredients" component="span" />
           <Field id="inputAdd" name="ingredients" placeholder="Ingredients" />
-          <button type="submit"> Submit</button>
+          <button type="submit"> Update </button>
         </Form>
       </Formik>
     </div>
   );
 }
 
-export default AddFrancesinha;
+export default UpdateFrancesinha;

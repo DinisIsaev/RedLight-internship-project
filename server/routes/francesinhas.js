@@ -44,6 +44,25 @@ router.post("/", async (req, res) => {
   res.json(francesinha);
 });
 
+//Update francesinha info
+router.put("/:francesinhaId", async (req, res) => {
+  const updatedFrancesinha = req.body;
+  const francesinhaId = req.params.francesinhaId;
+  await Francesinhas.update(
+    {
+      name: updatedFrancesinha.name,
+      price: updatedFrancesinha.price,
+      rating: updatedFrancesinha.rating,
+      ingredients: updatedFrancesinha.ingredients,
+    },
+    {
+      where: {
+        id: francesinhaId,
+      },
+    }
+  );
+});
+
 router.delete("/:francesinhaId", async (req, res) => {
   const francesinhaId = req.params.francesinhaId;
   await Francesinhas.destroy({
