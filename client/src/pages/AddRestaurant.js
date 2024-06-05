@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function AddRestaurant() {
   let navigate = useNavigate();
 
+  //Initial values for fields
   const initialValues = {
     name: "",
     address: "",
@@ -15,12 +16,15 @@ function AddRestaurant() {
     rating: "",
   };
 
+  //Function to know what to do after pressing submit button
+  //Sends a HTTP request to add restaurant
   const onSubmit = (data) => {
     axios.post("http://localhost:3069/restaurants", data).then((res) => {
       navigate(`/listrestaurants`, { replace: true });
     });
   };
 
+  //Validation for form
   const validationSchema = yup.object().shape({
     name: yup.string().required(),
     address: yup.string().required(),

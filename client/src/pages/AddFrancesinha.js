@@ -8,6 +8,7 @@ function AddFrancesinha() {
   let { restaurantId } = useParams();
   let navigate = useNavigate();
 
+  //Initial values for fields
   const initialValues = {
     name: "",
     price: "",
@@ -16,6 +17,8 @@ function AddFrancesinha() {
     restaurant: "",
   };
 
+  //Function to know what to do after pressing submit button
+  //Sends a HTTP request to add francesinha
   const onSubmit = (data) => {
     axios
       .post("http://localhost:3069/francesinhas", {
@@ -30,6 +33,7 @@ function AddFrancesinha() {
       });
   };
 
+  //Validation for form
   const validationSchema = yup.object().shape({
     name: yup.string().required(),
     price: yup.number().required().min(0),

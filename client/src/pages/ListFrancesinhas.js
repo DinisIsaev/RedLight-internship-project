@@ -7,12 +7,14 @@ function ListFrancesinhas() {
   const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
   let navigate = useNavigate();
 
+  //HTTP request to get all francesinhas
   useEffect(() => {
     axios.get("http://localhost:3069/francesinhas").then((res) => {
       setListOfFrancesinhas(res.data);
     });
   }, []);
 
+  //Function to know what to do after searching
   const onSubmit = (event) => {
     navigate(
       `/francesinhasearchresults/${event.target.elements.search.value}`,

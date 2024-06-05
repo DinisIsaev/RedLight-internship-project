@@ -8,6 +8,7 @@ function RestaurantSearchResults() {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   let navigate = useNavigate();
 
+  //HTTP request to get all restaurants that match the name
   useEffect(() => {
     axios
       .get(`http://localhost:3069/restaurants/name/${search}`)
@@ -16,6 +17,7 @@ function RestaurantSearchResults() {
       });
   }, []);
 
+  //Function to know what to do after searching
   const onSubmit = (event) => {
     navigate(`/restaurantsearchresults/${event.target.elements.search.value}`, {
       replace: true,

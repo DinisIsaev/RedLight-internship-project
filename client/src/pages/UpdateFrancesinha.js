@@ -10,12 +10,15 @@ function UpdateFrancesinha() {
   const [francesinha, setFrancesinha] = useState({});
   let navigate = useNavigate();
 
+  //HTTP request to get francesinha that match the id
   useEffect(() => {
     axios.get(`http://localhost:3069/francesinhas/id/${id}`).then((res) => {
       setFrancesinha(res.data);
     });
   }, []);
 
+  //Function to know what to do after pressing submit button
+  //Sends a HTTP request to update francesinha that matches the id
   const onSubmit = (data) => {
     axios
       .put(`http://localhost:3069/francesinhas/${id}`, {
@@ -32,6 +35,7 @@ function UpdateFrancesinha() {
       });
   };
 
+  //Initial value for fields
   const initialValues = {
     name: francesinha.name,
     price: francesinha.price,
@@ -39,6 +43,7 @@ function UpdateFrancesinha() {
     ingredients: francesinha.ingredients,
   };
 
+  //Validation for form
   const validationSchema = yup.object().shape({
     name: yup.string().required(),
     price: yup.number().required().min(0),

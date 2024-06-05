@@ -25,6 +25,7 @@ router.get("/ofRestaurant/:restaurantId", async (req, res) => {
   res.json(francesinhas);
 });
 
+//Get all francesinhas whose name matches the param
 router.get("/name/:name", async (req, res) => {
   const search = req.params.name;
   const listOfFrancesinhas = await Francesinhas.findAll({
@@ -63,6 +64,7 @@ router.put("/:francesinhaId", async (req, res) => {
   );
 });
 
+//Delete specific francesinha whose ID matches the param
 router.delete("/:francesinhaId", async (req, res) => {
   const francesinhaId = req.params.francesinhaId;
   await Francesinhas.destroy({

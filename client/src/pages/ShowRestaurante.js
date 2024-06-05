@@ -9,12 +9,14 @@ function ShowRestaurante() {
   const [restaurant, setRestaurant] = useState({});
   const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
 
+  //HTTP request to get restaurant that match the id
   useEffect(() => {
     axios.get(`http://localhost:3069/restaurants/id/${id}`).then((res) => {
       setRestaurant(res.data);
     });
   }, []);
 
+  //HTTP request to get all francesinhas from the restaurant
   useEffect(() => {
     axios
       .get(`http://localhost:3069/francesinhas/ofRestaurant/${id}`)
@@ -23,12 +25,15 @@ function ShowRestaurante() {
       });
   }, []);
 
+  //Function to know what to do after pressing delete button
+  //Sends a HTTP request to delete restaurant that matches the id
   const deleteRestaurant = (id) => {
     axios.delete(`http://localhost:3069/restaurants/${id}`).then(() => {
       navigate("/listrestaurants", { replace: true });
     });
   };
 
+  //Function to know what to do after pressing update button
   const updateRestaurant = (id) => {
     navigate(`/updaterestaurant/${id}`);
   };

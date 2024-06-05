@@ -10,6 +10,7 @@ function UpdateRestaurant() {
   let navigate = useNavigate();
   const [restaurant, setRestaurant] = useState({});
 
+  //Initial values for fields
   const initialValues = {
     name: restaurant.name,
     address: restaurant.address,
@@ -18,6 +19,8 @@ function UpdateRestaurant() {
     rating: restaurant.rating,
   };
 
+  //Function to know what to do after pressing submit button
+  //Sends a HTTP request to update restaurant that matches the id
   const onSubmit = (data) => {
     axios
       .put(`http://localhost:3069/restaurants/${id}`, {
@@ -34,6 +37,7 @@ function UpdateRestaurant() {
       });
   };
 
+  //Validation for form
   const validationSchema = yup.object().shape({
     name: yup.string().required(),
     address: yup.string().required(),
@@ -69,7 +73,7 @@ function UpdateRestaurant() {
           <label>Rating: </label>
           <ErrorMessage name="rating" component="span" />
           <Field id="inputAdd" name="rating" placeholder="Rating" />
-          <button type="submit"> Submit</button>
+          <button type="submit"> Update</button>
         </Form>
       </Formik>
     </div>

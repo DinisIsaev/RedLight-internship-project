@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import video from "../media/francesinhavid.mp4";
 import bannerImage from "../media/bannerImage.png";
 import restaurantImage from "../media/Restaurant1.jpg";
 import { useNavigate } from "react-router-dom";
@@ -12,12 +11,14 @@ function Home() {
   const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
   let navigate = useNavigate();
 
+  //HTTP request to get all restaurants
   useEffect(() => {
     axios.get("http://localhost:3069/restaurants").then((res) => {
       setListOfRestaurants(res.data);
     });
   }, []);
 
+  //HTTP request to get all francesinhas
   useEffect(() => {
     axios.get("http://localhost:3069/francesinhas").then((res) => {
       setListOfFrancesinhas(res.data);
@@ -40,7 +41,7 @@ function Home() {
                 onClick={() => navigate(`/showfrancesinha/${value.id}`)}
               >
                 <div className="exampleFrancesinhaImageContainer">
-                  <img src={bannerImage} className="exampleFrancesinhaImage" />
+                  toBePhoto
                 </div>
                 <div className="exampleFrancesinhaText">
                   <div className="exampleFrancesinhaName">{value.name}</div>
@@ -74,7 +75,7 @@ function Home() {
                 className="exampleRestaurant"
                 onClick={() => navigate(`/showrestaurant/${value.id}`)}
               >
-                <img src={restaurantImage} className="exampleRestaurantImage" />
+                <p className="exampleRestaurantImage">toBePhoto</p>
                 <div className="exampleRestaurantText">{value.name}</div>
               </div>
             );

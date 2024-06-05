@@ -8,6 +8,7 @@ function FrancesinhaSearchResults() {
   const [listOfFrancesinhas, setListOfFrancesinhas] = useState([]);
   let navigate = useNavigate();
 
+  //HTTP request to get all restaurants that match the name
   useEffect(() => {
     axios
       .get(`http://localhost:3069/francesinhas/name/${search}`)
@@ -16,6 +17,7 @@ function FrancesinhaSearchResults() {
       });
   }, []);
 
+  //Function to know what to do after searching
   const onSubmit = (event) => {
     navigate(
       `/francesinhasearchresults/${event.target.elements.search.value}`,
